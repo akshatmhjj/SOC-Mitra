@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    background-color: #f8fafc;
+    color: #0f172a;
+    font-family: 'DM Sans', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer utilities {
+  .text-brand-600 { color: #c26d22; }
+  .text-brand-700 { color: #a1541c; }
+  .bg-brand-50 { background-color: #fdf8f0; }
+  .bg-brand-600 { background-color: #c26d22; }
+  .bg-brand-950 { background-color: #3a1a0b; }
+  .border-brand-200 { border-color: #f2d7b0; }
+  .border-brand-300 { border-color: #e8bc7e; }
+  .ring-brand-100 { --tw-ring-color: #f2d7b0; }
+  .hover\:bg-brand-50:hover { background-color: #f9eddb; }
+  .hover\:text-brand-600:hover { color: #c26d22; }
+  .hover\:border-brand-200:hover { border-color: #f2d7b0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

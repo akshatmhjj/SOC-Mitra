@@ -1,0 +1,72 @@
+import { motion } from 'framer-motion'
+import { ArrowRight, FileText } from 'lucide-react'
+import { Container } from '@/ui/Container'
+import { Button } from '@/ui/Button'
+
+export function Hero() {
+  return (
+    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-28 overflow-hidden">
+      <Container>
+        <motion.div
+          className="max-w-4xl mx-auto text-center"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+          }}
+        >
+          <motion.p
+            className="text-sm font-medium text-brand-600 uppercase tracking-wider"
+            variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 10 } }}
+          >
+            Three editions. Five days a week. One decisive edge.
+          </motion.p>
+
+          <motion.h1
+            className="mt-6 font-display font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-slate-900 leading-[1.1] tracking-tight"
+            variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 16 } }}
+          >
+            One read before the open, one at midday, one before you sign off.
+          </motion.h1>
+
+          <motion.p
+            className="mt-8 text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto"
+            variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 12 } }}
+          >
+            The Morning, Afternoon, and Evening editions replace the noise of a live feed with
+            three fixed, focused briefings - delivered at 8:30 AM, 2:15 PM, and 7:00 PM.
+            Structured, consistent, and built for follow-through.
+          </motion.p>
+
+          <motion.div
+            className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 16 } }}
+          >
+            <Button
+              className="w-full sm:w-auto gap-2 text-lg px-8 py-3.5"
+              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              See yearly plans
+              <ArrowRight size={18} />
+            </Button>
+            <Button
+              variant="outline"
+              className="w-full sm:w-auto gap-2 text-lg px-8 py-3.5"
+              onClick={() => document.getElementById('preview')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              <FileText size={18} />
+              Preview a report
+            </Button>
+          </motion.div>
+
+          <motion.p
+            className="mt-10 text-sm text-slate-500"
+            variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 8 } }}
+          >
+            Independent research · Subscriber-funded · NISM-certified
+          </motion.p>
+        </motion.div>
+      </Container>
+    </section>
+  )
+}
