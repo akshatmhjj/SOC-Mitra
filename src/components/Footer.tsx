@@ -1,6 +1,5 @@
 import { FormEvent, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Check, Mail } from 'lucide-react'
 import { Container } from '@/ui/Container'
 import { footerData } from '@/data/footer'
 
