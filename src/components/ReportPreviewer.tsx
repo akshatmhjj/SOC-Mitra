@@ -1,11 +1,139 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FileText, ChevronRight, ArrowUpRight, ArrowDownRight, X, ExternalLink, AlertCircle } from 'lucide-react'
+import { FileText, ChevronRight, ChevronLeft, ArrowUpRight, ArrowDownRight, X, ExternalLink, AlertCircle } from 'lucide-react'
 import { Container } from '@/ui/Container'
 import { Button } from '@/ui/Button'
 import { moduleContent } from '@/data/modules'
 
 const moduleNames = Object.keys(moduleContent)
+
+const reportSlides = [
+  {
+    title: 'SOC Morning Brief',
+    eyebrow: '8:30 AM · Pre-market intelligence',
+    description: 'Global cues, overnight developments, sector outlook, and key levels to start the session prepared.',
+    image: '/SOC_Morning_Brief_Slider.png',
+  },
+  {
+    title: 'SOC Mid Day Report',
+    eyebrow: '2:15 PM · Real-time market update',
+    description: 'A live read on what has changed, where momentum is building, and which opportunities need attention.',
+    image: '/SOC_Midday_Report_Slider.png',
+  },
+  {
+    title: 'SOC Post Market Report',
+    eyebrow: '7:00 PM · End-of-day perspective',
+    description: 'The day in context, with key takeaways, institutional activity, and a clear outlook for tomorrow.',
+    image: '/SOC_Post Market_Report_Slider.png',
+  },
+]
+
+function ReportCadenceCarousel() {
+  const [activeSlide, setActiveSlide] = useState(0)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % reportSlides.length)
+    }, 6500)
+
+    return () => window.clearInterval(timer)
+  }, [])
+
+  const slide = reportSlides[activeSlide]
+
+  const showPrevious = () => {
+    setActiveSlide((current) => (current - 1 + reportSlides.length) % reportSlides.length)
+  }
+
+  const showNext = () => {
+    setActiveSlide((current) => (current + 1) % reportSlides.length)
+  }
+
+  return (
+    <motion.div
+      className="mb-12 -mx-3 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:-mx-5 lg:-mx-8"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.55 }}
+      aria-roledescription="carousel"
+      aria-label="SOC report editions"
+    >
+      <div className="grid lg:grid-cols-[1.35fr_0.65fr]">
+        <div className="relative bg-slate-450 p-3 sm:p-4">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={slide.image}
+              src={slide.image}
+              alt={`${slide.title} report preview`}
+              className="aspect-[2.37/1] w-full rounded-xl object-cover object-center"
+              initial={{ opacity: 0, scale: 1.015 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35 }}
+            />
+          </AnimatePresence>
+          <button
+            type="button"
+            onClick={showPrevious}
+            className="absolute left-6 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-slate-950/65 text-white transition-colors hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-white"
+            aria-label="Previous report preview"
+          >
+            <ChevronLeft size={18} />
+          </button>
+          <button
+            type="button"
+            onClick={showNext}
+            className="absolute right-6 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-slate-950/65 text-white transition-colors hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-white"
+            aria-label="Next report preview"
+          >
+            <ChevronRight size={18} />
+          </button>
+        </div>
+
+        <div className="flex flex-col justify-between p-5 sm:p-7">
+          <div>
+            <div className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">
+              <span className="h-px w-6 bg-brand-500" />
+              Three daily editions
+            </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={slide.title}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25 }}
+                aria-live="polite"
+              >
+                <p className="text-xs font-semibold text-slate-500">{slide.eyebrow}</p>
+                <h3 className="mt-2 font-display text-2xl font-bold text-slate-900 sm:text-3xl">{slide.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{slide.description}</p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="mt-7 flex items-center justify-between gap-4 border-t border-slate-100 pt-4">
+            <div className="flex items-center gap-2" role="tablist" aria-label="Choose report preview">
+              {reportSlides.map((report, index) => (
+                <button
+                  key={report.title}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeSlide === index}
+                  aria-label={`Show ${report.title}`}
+                  onClick={() => setActiveSlide(index)}
+                  className={`h-2 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-brand-300 ${activeSlide === index ? 'w-7 bg-brand-600' : 'w-2 bg-slate-300 hover:bg-slate-400'}`}
+                />
+              ))}
+            </div>
+            <span className="text-xs font-medium tabular-nums text-slate-400">0{activeSlide + 1} / 0{reportSlides.length}</span>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
 
 // ─── Dataviz color tokens (reference palette, brand-mapped) ─────────────────
 const C = {
@@ -434,6 +562,8 @@ export function ReportPreviewer() {
             </p>
           </motion.div>
 
+          <ReportCadenceCarousel />
+
           <div className="grid gap-8 lg:grid-cols-5">
             {/* Left: module list */}
             <div className="lg:col-span-2 space-y-2" role="listbox" aria-label="Report modules">
@@ -463,7 +593,7 @@ export function ReportPreviewer() {
               })}
 
               {/* CTA */}
-              <motion.div
+              {/* <motion.div
                 className="pt-2"
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -476,10 +606,11 @@ export function ReportPreviewer() {
                   <ExternalLink size={15} />
                   View full report
                 </Button>
-                <p className="text-xs text-slate-400 text-center mt-2">
+                
+              </motion.div> */}
+              <p className="text-xs text-slate-400 text-center mt-2">
                   All modules · Illustrative sample data
                 </p>
-              </motion.div>
             </div>
 
             {/* Right: PDF pane with viz */}
