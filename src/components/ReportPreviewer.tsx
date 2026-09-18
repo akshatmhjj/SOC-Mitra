@@ -93,7 +93,6 @@ function ReportCadenceCarousel() {
         </div>
       </div>
 
-      {/* 2. Details Section Below Carousel */}
       <div className="p-6 sm:p-8 lg:p-10 border-t border-slate-100 bg-white">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-2">
           <AnimatePresence mode="wait">
@@ -122,7 +121,6 @@ function ReportCadenceCarousel() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Quick Select Edition Tabs / Indicators */}
           <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
             <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">
               Edition 0{activeSlide + 1} of 0{reportSlides.length}
@@ -137,8 +135,8 @@ function ReportCadenceCarousel() {
                   aria-label={`Show ${report.title}`}
                   onClick={() => setActiveSlide(index)}
                   className={`group flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all focus:outline-none focus:ring-2 focus:ring-brand-400 ${activeSlide === index
-                      ? 'bg-brand-600 text-white shadow-sm font-semibold'
-                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    ? 'bg-brand-600 text-white shadow-sm font-semibold'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                 >
                   <span className={`w-2 h-2 rounded-full ${activeSlide === index ? 'bg-white' : 'bg-slate-400'}`} />
@@ -567,7 +565,7 @@ export function ReportPreviewer() {
       <section id="preview" className="py-16 sm:py-20 lg:py-24" aria-labelledby="preview-heading">
         <Container>
           <motion.div
-            className="text-center max-w-2xl mx-auto mb-10"
+            className="text-center max-w-2xl mx-auto mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-100px' }}
