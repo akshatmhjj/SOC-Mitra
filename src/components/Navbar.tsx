@@ -38,7 +38,7 @@ export function Navbar() {
               className="h-12 max-h-12 w-auto object-contain"
             />
             <span className="font-display font-bold text-2xl text-slate-900 hidden sm:block">
-              SOC Mitra
+              SANDEEP OJHA & CO
             </span>
           </a>
 
