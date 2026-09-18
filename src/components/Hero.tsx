@@ -5,16 +5,32 @@ import { Button } from '@/ui/Button'
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-28 overflow-hidden">
-      <Container>
+    <section className="relative pt-20 pb-20 lg:pt-26 lg:pb-16 overflow-hidden">
+      <Container className="relative z-10">
         <motion.div
-          className="max-w-4xl mx-auto text-center"
+          className="mx-auto text-center"
           initial="hidden"
           animate="visible"
           variants={{
             visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
           }}
         >
+          <motion.div
+            className="relative mx-auto mb-8 flex items-center justify-center select-none"
+            variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 16 } }}
+          >
+
+            <img
+              src="/Company%20Name%20Logo.jpg"
+              alt="SOC Mitra"
+              className="relative w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl object-contain opacity-[0.8] mix-blend-multiply filter contrast-125"
+              style={{
+                maskImage: 'radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 72%)',
+                WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 72%)',
+              }}
+            />
+          </motion.div>
+
           <motion.p
             className="text-sm font-medium text-brand-600 uppercase tracking-wider"
             variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 10 } }}
