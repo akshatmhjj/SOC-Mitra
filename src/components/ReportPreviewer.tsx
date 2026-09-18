@@ -51,7 +51,7 @@ function ReportCadenceCarousel() {
 
   return (
     <motion.div
-      className="mb-12 -mx-3 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm sm:-mx-5 lg:-mx-8"
+      className="mb-14 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md shadow-slate-100/80"
       initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
@@ -59,61 +59,74 @@ function ReportCadenceCarousel() {
       aria-roledescription="carousel"
       aria-label="SOC report editions"
     >
-      <div className="grid lg:grid-cols-[1.35fr_0.65fr]">
-        <div className="relative bg-slate-450 p-3 sm:p-4">
+      <div className="relative w-full bg-slate-900/5 p-2.5 sm:p-4 overflow-hidden">
+        <div className="relative overflow-hidden rounded-xl bg-slate-950/10">
           <AnimatePresence mode="wait">
             <motion.img
               key={slide.image}
               src={slide.image}
               alt={`${slide.title} report preview`}
-              className="aspect-[2.37/1] w-full rounded-xl object-cover object-center"
+              className="w-full h-auto aspect-[16/9] sm:aspect-[2/1] lg:aspect-[2.35/1] max-h-[620px] object-cover object-center rounded-xl shadow-inner transition-transform"
               initial={{ opacity: 0, scale: 1.015 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.35 }}
+              exit={{ opacity: 0, scale: 0.985 }}
+              transition={{ duration: 0.35, ease: 'easeInOut' }}
             />
           </AnimatePresence>
+
           <button
             type="button"
             onClick={showPrevious}
-            className="absolute left-6 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-slate-950/65 text-white transition-colors hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-white"
+            className="absolute left-4 sm:left-6 top-1/2 flex h-10 w-10 sm:h-12 sm:w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-slate-950/70 text-white backdrop-blur-sm transition-all hover:bg-brand-600 hover:scale-105 active:scale-95 shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-400"
             aria-label="Previous report preview"
           >
-            <ChevronLeft size={18} />
+            <ChevronLeft size={22} />
           </button>
           <button
             type="button"
             onClick={showNext}
-            className="absolute right-6 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-white/30 bg-slate-950/65 text-white transition-colors hover:bg-brand-600 focus:outline-none focus:ring-2 focus:ring-white"
+            className="absolute right-4 sm:right-6 top-1/2 flex h-10 w-10 sm:h-12 sm:w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-slate-950/70 text-white backdrop-blur-sm transition-all hover:bg-brand-600 hover:scale-105 active:scale-95 shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-400"
             aria-label="Next report preview"
           >
-            <ChevronRight size={18} />
+            <ChevronRight size={22} />
           </button>
         </div>
+      </div>
 
-        <div className="flex flex-col justify-between p-5 sm:p-7">
-          <div>
-            <div className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-brand-600">
-              <span className="h-px w-6 bg-brand-500" />
-              Three daily editions
-            </div>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={slide.title}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.25 }}
-                aria-live="polite"
-              >
-                <p className="text-xs font-semibold text-slate-500">{slide.eyebrow}</p>
-                <h3 className="mt-2 font-display text-2xl font-bold text-slate-900 sm:text-3xl">{slide.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">{slide.description}</p>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+      {/* 2. Details Section Below Carousel */}
+      <div className="p-6 sm:p-8 lg:p-10 border-t border-slate-100 bg-white">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 pb-2">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={slide.title}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="flex-1 max-w-3xl"
+              aria-live="polite"
+            >
+              <div className="flex flex-wrap items-center gap-3 mb-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-brand-50 text-brand-700 border border-brand-200">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-600 animate-pulse" />
+                  Three daily editions
+                </span>
+                <span className="text-xs font-semibold text-slate-500">{slide.eyebrow}</span>
+              </div>
+              <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight">
+                {slide.title}
+              </h3>
+              <p className="mt-3 text-base sm:text-lg leading-relaxed text-slate-600">
+                {slide.description}
+              </p>
+            </motion.div>
+          </AnimatePresence>
 
-          <div className="mt-7 flex items-center justify-between gap-4 border-t border-slate-100 pt-4">
+          {/* Quick Select Edition Tabs / Indicators */}
+          <div className="flex flex-col items-start md:items-end gap-3 shrink-0">
+            <span className="text-xs font-semibold uppercase tracking-widest text-slate-400">
+              Edition 0{activeSlide + 1} of 0{reportSlides.length}
+            </span>
             <div className="flex items-center gap-2" role="tablist" aria-label="Choose report preview">
               {reportSlides.map((report, index) => (
                 <button
@@ -123,11 +136,17 @@ function ReportCadenceCarousel() {
                   aria-selected={activeSlide === index}
                   aria-label={`Show ${report.title}`}
                   onClick={() => setActiveSlide(index)}
-                  className={`h-2 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-brand-300 ${activeSlide === index ? 'w-7 bg-brand-600' : 'w-2 bg-slate-300 hover:bg-slate-400'}`}
-                />
+                  className={`group flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium transition-all focus:outline-none focus:ring-2 focus:ring-brand-400 ${activeSlide === index
+                      ? 'bg-brand-600 text-white shadow-sm font-semibold'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                >
+                  <span className={`w-2 h-2 rounded-full ${activeSlide === index ? 'bg-white' : 'bg-slate-400'}`} />
+                  <span className="hidden sm:inline">{report.title.replace('SOC ', '')}</span>
+                  <span className="sm:hidden">{index + 1}</span>
+                </button>
               ))}
             </div>
-            <span className="text-xs font-medium tabular-nums text-slate-400">0{activeSlide + 1} / 0{reportSlides.length}</span>
           </div>
         </div>
       </div>
@@ -609,8 +628,8 @@ export function ReportPreviewer() {
                 
               </motion.div> */}
               <p className="text-xs text-slate-400 text-center mt-2">
-                  All modules · Illustrative sample data
-                </p>
+                All modules · Illustrative sample data
+              </p>
             </div>
 
             {/* Right: PDF pane with viz */}

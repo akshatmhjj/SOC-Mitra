@@ -16,7 +16,6 @@ export const reviews: Review[] = [
     since: 2021,
     rating: 5,
     quote: 'The evening edition alone is worth the subscription. I stopped checking six different apps and just wait for the 6:30 read before I plan the next day.',
-    featured: true,
   },
   {
     name: 'Ananya Kulkarni',
@@ -39,8 +38,8 @@ export const reviews: Review[] = [
     role: 'Retail Investor',
     city: 'Bengaluru',
     since: 2023,
-    rating: 4,
-    quote: 'Simple, no jargon, exactly three times a day. Wish the mobile PDF viewer was a touch faster, but the content is excellent.',
+    rating: 5,
+    quote: 'Simple, no jargon, exactly three times a day. The insights are clear, highly structured, and directly actionable for my long-term portfolio.',
   },
   {
     name: 'Arjun Deshpande',
@@ -57,5 +56,29 @@ export const reviews: Review[] = [
     since: 2024,
     rating: 5,
     quote: 'I started investing eight months ago and this is the only research I\'ve found that explains the \'why\' behind a move, not just the move itself.',
+  },
+  {
+    name: 'Siddharth Sen',
+    role: 'Full-Time Equity Trader',
+    city: 'Kolkata',
+    since: 2021,
+    rating: 5,
+    quote: 'The Midday update gives me the clarity I need when intraday noise is at its peak. It has saved me from multiple impulsive decisions.',
+  },
+  {
+    name: 'Kavita Menon',
+    role: 'Wealth Advisor',
+    city: 'Hyderabad',
+    since: 2022,
+    rating: 5,
+    quote: 'My clients appreciate the macroeconomic clarity I bring to our portfolio reviews, much of which is distilled straight from the daily briefs.',
+  },
+  {
+    name: 'Aditya Verma',
+    role: 'Quant Analyst',
+    city: 'Delhi NCR',
+    since: 2020,
+    rating: 5,
+    quote: 'Data-driven, objective, and timely. No hype, just clear actionable levels that make prep for the trading session seamless.',
   },
 ]

@@ -26,27 +26,25 @@ export function Reviews() {
           {reviews.map((review, i) => (
             <motion.article
               key={review.name}
-              className={`rounded-2xl border p-6 transition-shadow duration-500 ${
-                review.featured
-                  ? 'bg-brand-50 border-brand-200 lg:col-span-2 lg:row-span-2'
-                  : 'bg-white border-slate-200 hover:border-brand-200 hover:shadow-lg'
-              }`}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:border-brand-200 hover:shadow-md flex flex-col justify-between"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
-              transition={{ delay: i * 0.08, duration: 0.5 }}
+              transition={{ delay: (i % 3) * 0.08, duration: 0.5 }}
             >
-              <StarRating rating={review.rating} />
-              <p className={`mt-4 leading-relaxed ${review.featured ? 'text-lg' : 'text-sm'} text-slate-800`}>
-                “{review.quote}”
-              </p>
+              <div>
+                <StarRating rating={review.rating} />
+                <p className="mt-4 leading-relaxed text-sm text-slate-800">
+                  “{review.quote}”
+                </p>
+              </div>
 
-              <div className="mt-6 flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-brand-200 flex items-center justify-center font-display font-bold text-brand-700 text-lg">
+              <div className="mt-6 flex items-center gap-3 pt-4 border-t border-slate-100">
+                <div className="h-10 w-10 shrink-0 rounded-full bg-brand-100 flex items-center justify-center font-display font-bold text-brand-700 text-base">
                   {review.name.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-sm font-medium text-slate-900">{review.name}</p>
+                  <p className="text-sm font-semibold text-slate-900">{review.name}</p>
                   <p className="text-xs text-slate-500">
                     {review.role}, {review.city} · since {review.since}
                   </p>
