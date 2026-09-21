@@ -12,8 +12,8 @@ export interface PricingTier {
 export const pricingTiers: PricingTier[] = [
   {
     name: 'Essential [SOC Mera Saathi]',
-    price: 1599,
-    compareAt: 1999,
+    price: 1899,
+    compareAt: 2999,
     features: [
       'Morning Market Brief',
       'Special Diwali Picks Reports',
@@ -24,8 +24,8 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     name: 'Professional [SOC Mera Saarthi]',
-    price: 2099,
-    compareAt: 2599,
+    price: 2499,
+    compareAt: 3999,
     features: [
       'Morning Market Brief',
       'Post Market Brief',
@@ -37,8 +37,8 @@ export const pricingTiers: PricingTier[] = [
   },
   {
     name: 'Executive [SOC Mera Parivaar]',
-    price: 2599,
-    compareAt: 2999,
+    price: 2999,
+    compareAt: 4999,
     badge: 'Most subscribed',
     featured: true,
     features: [
