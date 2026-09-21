@@ -75,12 +75,12 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          <motion.p
+          {/* <motion.p
             className="mt-10 text-sm text-slate-500"
             variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 8 } }}
           >
             Independent research · Subscriber-funded · NISM-certified
-          </motion.p>
+          </motion.p> */}
         </motion.div>
       </Container>
     </section>
