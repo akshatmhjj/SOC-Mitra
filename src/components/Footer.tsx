@@ -146,7 +146,7 @@ export function Footer({
               © 2026 SANDEEP OJHA & COMPANY. All Rights Reserved.
             </p>
             <p className="text-xs leading-relaxed text-slate-600 max-w-4xl mx-auto">
-              <strong className="text-slate-900">Market Disclaimer:</strong> Investment and trading in securities and derivatives involve risk. The information provided through this website and SOC research products is for Educational & Informative Purpose. No return or profit is guaranteed. Please read our Disclaimer, Risk Disclosure, Terms & Conditions and Privacy Policy before using our services.
+              <strong className="text-slate-900">Market Disclaimer:</strong> Investment and trading in securities and derivatives involve risk. The information provided through this website and SOC research products is for Educational & Informative Purpose. No return or profit is guaranteed. Please read our Privacy Policy, Risk Disclosure, Grievance Policy and Cookie Policy before using our services.
             </p>
           </div>
         </motion.div>
