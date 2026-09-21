@@ -27,22 +27,30 @@ export function Footer({
 
   return (
     <footer className="pt-10 pb-8 border-t border-slate-200 bg-white">
-      <Container>
-        <div className="grid gap-6 lg:grid-cols-[auto_1fr_auto] lg:items-center">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
+        <div className="grid gap-8 lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-16">
           {/* Logo */}
           <div className="flex justify-center lg:justify-start">
             <img
               src="/Company%20Name%20Logo.jpg"
               alt="SOC Mitra"
-              className="h-44 w-auto object-contain shrink-0"
+              className="h-32 w-auto object-contain shrink-0"
             />
           </div>
 
           {/* Description */}
-          <div className="text-center lg:text-left lg:px-8">
-            <p className="text-sm text-slate-600 leading-relaxed">
-              {footerData.description}
-            </p>
+          <div className="text-center lg:text-left lg:px-4">
+            <div className="text-xs text-slate-600 leading-relaxed space-y-3">
+              <p className="font-semibold text-slate-900">Your Business. Your Finance. One Trusted Partner.</p>
+              <p>
+                SANDEEP OJHA & COMPANY (SOC) is a professional financial and business consultants firm providing integrated support across Taxation, Capital Markets, Investments, Banking and International Trade.
+              </p>
+              <p>
+                With expertise in Tax Practice, NISM-certified financial markets, DGFT consultancy and business financial structuring, we help clients make informed decisions and build stronger financial foundations.
+              </p>
+              <p className="font-medium text-slate-800">Understand. Structure. Strategize. Grow.</p>
+              <p className="text-brand-600 font-medium">Ready to strengthen your financial strategy? Talk to SOC today.</p>
+            </div>
           </div>
 
           {/* Subscribe Box */}
@@ -127,7 +135,7 @@ export function Footer({
             </p>
           </div>
         </motion.div>
-      </Container>
+      </div>
     </footer>
   )
 }

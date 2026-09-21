@@ -1,6 +1,6 @@
 export const footerData = {
   description:
-    'A NISM-certified research and advisory practice based in Indore, publishing independent market intelligence for subscribers across India since 2019.',
+    'Your Business. Your Finance. One Trusted Partner.\n\nSANDEEP OJHA & COMPANY (SOC) is a professional financial and business consultants firm providing integrated support across Taxation, Capital Markets, Investments, Banking and International Trade.\n\nWith expertise in Tax Practice, NISM-certified financial markets, DGFT consultancy and business financial structuring, we help clients make informed decisions and build stronger financial foundations.\n\nUnderstand. Structure. Strategize. Grow.\n\nReady to strengthen your financial strategy? Talk to SOC today.',
   columns: [
     // {
     //   heading: 'Product',
