@@ -1,7 +1,5 @@
 import { FormEvent, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Container } from '@/ui/Container'
-import { footerData } from '@/data/footer'
 
 interface FooterProps {
   onNavigateToPrivacy?: () => void
