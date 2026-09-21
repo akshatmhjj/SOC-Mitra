@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 export function Hero() {
   const [typewriterText, setTypewriterText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
-  const fullText = 'This is not a tips or call service'
+  const fullText = 'This is not a tips or call service !'
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>
