@@ -31,5 +31,5 @@ export const footerData = {
     // },
   ],
   regulatory:
-    '© 2026 SOC Mitra. Registered tax practitioner and NISM-certified research analyst. This publication is for informational purposes only and does not constitute investment advice - please consult your financial advisor before investing.',
+    '© 2026 SOC Mitra. Registered tax practitioner and NISM-certified research analyst. This publication is for informational purposes only and does not constitute investment advice, please consult your financial advisor before investing.',
 }

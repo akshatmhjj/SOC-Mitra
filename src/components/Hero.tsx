@@ -42,7 +42,7 @@ export function Hero() {
             className="mt-6 font-display font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-slate-900 leading-[1.1] tracking-tight"
             variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 16 } }}
           >
-            One read before the open, one at midday, one before you sign off.
+            One read before the market opens, one at midday, one before you sign off for the day.
           </motion.h1>
 
           <motion.p

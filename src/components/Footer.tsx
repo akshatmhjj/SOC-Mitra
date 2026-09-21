@@ -3,7 +3,19 @@ import { motion } from 'framer-motion'
 import { Container } from '@/ui/Container'
 import { footerData } from '@/data/footer'
 
-export function Footer() {
+interface FooterProps {
+  onNavigateToPrivacy?: () => void
+  onNavigateToRiskDisclosure?: () => void
+  onNavigateToGrievance?: () => void
+  onNavigateToCookies?: () => void
+}
+
+export function Footer({
+  onNavigateToPrivacy,
+  onNavigateToRiskDisclosure,
+  onNavigateToGrievance,
+  onNavigateToCookies
+}: FooterProps) {
   const [email, setEmail] = useState('')
   const [isSubscribed, setIsSubscribed] = useState(false)
 
@@ -14,7 +26,7 @@ export function Footer() {
   }
 
   return (
-    <footer className="pt-10 pb-8 border-t border-slate-200 bg-slate-50">
+    <footer className="pt-10 pb-8 border-t border-slate-200 bg-white">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[1fr_26rem] lg:items-end">
           <div>
@@ -86,15 +98,57 @@ export function Footer() {
           ))} */}
 
         <motion.div
-          className="mt-6 pt-6 border-t border-slate-200"
+          className="mt-8 pt-6 border-t border-slate-200 space-y-4"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-xs leading-relaxed text-slate-500">
-            {footerData.regulatory}
-          </p>
+          {/* Policy Links */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            {onNavigateToPrivacy && (
+              <button
+                onClick={onNavigateToPrivacy}
+                className="text-xs font-medium text-slate-600 hover:text-brand-600 transition-colors"
+              >
+                Privacy Policy
+              </button>
+            )}
+            {onNavigateToRiskDisclosure && (
+              <button
+                onClick={onNavigateToRiskDisclosure}
+                className="text-xs font-medium text-slate-600 hover:text-brand-600 transition-colors"
+              >
+                Risk Disclosure
+              </button>
+            )}
+            {onNavigateToGrievance && (
+              <button
+                onClick={onNavigateToGrievance}
+                className="text-xs font-medium text-slate-600 hover:text-brand-600 transition-colors"
+              >
+                Grievance Policy
+              </button>
+            )}
+            {onNavigateToCookies && (
+              <button
+                onClick={onNavigateToCookies}
+                className="text-xs font-medium text-slate-600 hover:text-brand-600 transition-colors"
+              >
+                Cookie Policy
+              </button>
+            )}
+          </div>
+
+          {/* Copyright and Disclaimer */}
+          <div className="text-center space-y-2">
+            <p className="text-xs font-medium text-slate-900">
+              © 2026 SANDEEP OJHA & COMPANY. All Rights Reserved.
+            </p>
+            <p className="text-xs leading-relaxed text-slate-600 max-w-4xl mx-auto">
+              <strong className="text-slate-900">Market Disclaimer:</strong> Investment and trading in securities and derivatives involve risk. The information provided through this website and SOC research products is for Educational & Informative Purpose. No return or profit is guaranteed. Please read our Disclaimer, Risk Disclosure, Terms & Conditions and Privacy Policy before using our services.
+            </p>
+          </div>
         </motion.div>
       </Container>
     </footer>
