@@ -68,7 +68,7 @@ export function Hero() {
           </motion.div>
 
           <motion.div
-            className="text-sm font-medium text-brand-600 uppercase tracking-wider min-h-[1.5rem]"
+            className="text-3xl font-medium text-red-600 uppercase tracking-wider min-h-[1.5rem]"
             variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 10 } }}
           >
             <p className="flex items-center justify-center gap-1">
