@@ -98,6 +98,23 @@ export function Pricing() {
                   <p className="text-xs text-brand-600 font-medium mt-0.5">{soc}</p>
                 )}
 
+                {/* Per day cost */}
+                {tier.name.includes('Essential') && (
+                  <p className="text-xl text-brand-600 font-semibold mt-2">
+                    Less than <span className="text-2xl font-bold">₹8</span> per day
+                  </p>
+                )}
+                {tier.name.includes('Professional') && (
+                  <p className="text-xl text-brand-600 font-semibold mt-2">
+                    Less than <span className="text-2xl font-bold">₹10</span> per day
+                  </p>
+                )}
+                {tier.featured && (
+                  <p className="text-xl text-brand-600 font-semibold mt-2">
+                    Less than <span className="text-2xl font-bold">₹12</span> per day
+                  </p>
+                )}
+
                 <div className="mt-4 flex items-baseline gap-2">
                   <span className="text-4xl font-display font-bold text-slate-900">
                     ₹{tier.price.toLocaleString('en-IN')}
