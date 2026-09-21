@@ -2,10 +2,46 @@ import { motion } from 'framer-motion'
 import { ArrowRight, FileText } from 'lucide-react'
 import { Container } from '@/ui/Container'
 import { Button } from '@/ui/Button'
+import { useEffect, useState } from 'react'
 
 export function Hero() {
+  const [typewriterText, setTypewriterText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
+  const fullText = 'This is not a tips or call service'
+
+  useEffect(() => {
+    let timeout: ReturnType<typeof setTimeout>
+
+    const handleTyping = () => {
+      const currentLength = typewriterText.length
+
+      if (!isDeleting) {
+        // Typing forward
+        if (currentLength < fullText.length) {
+          setTypewriterText(fullText.slice(0, currentLength + 1))
+          timeout = setTimeout(handleTyping, 60)
+        } else {
+          // Pause before deleting
+          timeout = setTimeout(() => setIsDeleting(true), 1500)
+        }
+      } else {
+        // Deleting backward (backspace)
+        if (currentLength > 0) {
+          setTypewriterText(fullText.slice(0, currentLength - 1))
+          timeout = setTimeout(handleTyping, 200)
+        } else {
+          // Pause before typing again
+          timeout = setTimeout(() => setIsDeleting(false), 300)
+        }
+      }
+    }
+
+    timeout = setTimeout(handleTyping, 100)
+
+    return () => clearTimeout(timeout)
+  }, [typewriterText, isDeleting])
   return (
-    <section className="relative pt-20 pb-20 lg:pt-26 lg:pb-16 overflow-hidden">
+    <section className="relative pt-12 pb-20 lg:pt-16 lg:pb-16 overflow-hidden">
       <Container className="relative z-10">
         <motion.div
           className="mx-auto text-center"
@@ -16,7 +52,7 @@ export function Hero() {
           }}
         >
           <motion.div
-            className="relative mx-auto mb-8 flex items-center justify-center select-none"
+            className="relative mx-auto mb-4 flex items-center justify-center select-none"
             variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 16 } }}
           >
 
@@ -31,11 +67,21 @@ export function Hero() {
             />
           </motion.div>
 
-          <motion.p
-            className="text-sm font-medium text-brand-600 uppercase tracking-wider"
+          <motion.div
+            className="text-sm font-medium text-brand-600 uppercase tracking-wider min-h-[1.5rem]"
             variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 10 } }}
           >
-            Three editions. Five days a week. One decisive edge.
+            <p className="flex items-center justify-center gap-1">
+              {typewriterText}
+              {typewriterText && <span className="animate-pulse">|</span>}
+            </p>
+          </motion.div>
+
+          <motion.p
+            className="text-sm font-medium text-slate-700 mt-2"
+            variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 10 } }}
+          >
+            It is a professionally structured research report covering the key information you need to understand the market
           </motion.p>
 
           <motion.h1
@@ -75,12 +121,12 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          {/* <motion.p
-            className="mt-10 text-sm text-slate-500"
-            variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 8 } }}
+          <motion.p
+            className="text-sm mt-10 font-medium text-brand-600 uppercase tracking-wider"
+            variants={{ visible: { opacity: 1, y: 0 }, hidden: { opacity: 0, y: 10 } }}
           >
-            Independent research · Subscriber-funded · NISM-certified
-          </motion.p> */}
+            Three editions. Five days a week. One decisive edge.
+          </motion.p>
         </motion.div>
       </Container>
     </section>
