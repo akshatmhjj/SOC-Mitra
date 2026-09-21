@@ -28,37 +28,31 @@ export function Footer({
   return (
     <footer className="pt-10 pb-8 border-t border-slate-200 bg-white">
       <Container>
-        <div className="grid gap-8 lg:grid-cols-[1fr_26rem] lg:items-end">
-          <div>
+        <div className="grid gap-6 lg:grid-cols-[auto_1fr_auto] lg:items-center">
+          {/* Logo */}
+          <div className="flex justify-center lg:justify-start">
             <img
               src="/Company%20Name%20Logo.jpg"
               alt="SOC Mitra"
-              className="max-h-16 w-auto object-contain shrink-0 mb-5"
+              className="h-44 w-auto object-contain shrink-0"
             />
+          </div>
+
+          {/* Description */}
+          <div className="text-center lg:text-left lg:px-8">
             <p className="text-sm text-slate-600 leading-relaxed">
               {footerData.description}
             </p>
           </div>
 
-          <div className="rounded-xl border border-brand-200 bg-brand-50 p-5 sm:p-6">
-            <div className="flex items-start gap-3">
-              {/* <div>
-                <h3 className="font-display text-lg font-bold text-slate-900">Daily market intelligence</h3>
-                <p className="mt-1 text-sm leading-relaxed text-slate-600">
-                  Get the day&apos;s key market insights delivered to your inbox.
-                </p>
-              </div> */}
-            </div>
-
+          {/* Subscribe Box */}
+          <div className="rounded-xl border border-brand-200 bg-brand-50 p-5 sm:p-6 lg:min-w-[26rem]">
             {isSubscribed ? (
               <p className="rounded-md bg-brand-50 px-3 py-2.5 text-sm font-medium text-green-700">
                 You&apos;re on the list. Check your inbox for confirmation.
               </p>
             ) : (
               <form className="flex flex-col gap-2 sm:flex-row" onSubmit={handleSubmit}>
-              {/* <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-600 text-white">
-                {isSubscribed ? <Check size={18} /> : <Mail size={18} />}
-              </div> */}
                 <label htmlFor="newsletter-email" className="sr-only">Email address</label>
                 <input
                   id="newsletter-email"
@@ -79,23 +73,6 @@ export function Footer({
             )}
           </div>
         </div>
-
-        {/* {footerData.columns.map((column) => (
-            <div key={column.heading}>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-900">
-                {column.heading}
-              </h4>
-              <ul className="mt-4 space-y-2">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    <a href={link.href} className="text-sm text-slate-600 hover:text-brand-600 transition-colors">
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))} */}
 
         <motion.div
           className="mt-8 pt-6 border-t border-slate-200 space-y-4"
